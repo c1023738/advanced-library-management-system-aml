@@ -1,4 +1,5 @@
 import { Button} from "@/components/ui/button";
+import Link from "next/link";
 import client from "@/lib/wix";
 import {convertWixImageToUrl } from "@/lib/wix";
 import Image from "next/image";
@@ -85,7 +86,9 @@ export default async function Home({
               )}
             </CardContent>
             <CardFooter>
-                <Button>Reserve Book</Button>
+                <Button asChild>
+                <Link href={`/Explore/${Inventory?._id}`}>Reserve</Link>
+                </Button>
             </CardFooter>
             </Card>
             ))}
