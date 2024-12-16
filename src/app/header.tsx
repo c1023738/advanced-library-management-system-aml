@@ -1,11 +1,14 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
-import Image from "next/image"; // Import Image for optimized image handling
-import { loginAction } from "@/actions";
 
-export function Header() {
+import { getMember, getServerClient } from "@/lib/wix";
+import { loginAction, logoutAction } from "@/actions";
+import { getClient } from "@/lib/wix-client";
+
+export async function Header() {
+  const member = await getMember();
+  const isLoggedIn = await (await getServerClient()).auth.loggedIn();
   return (
     <div className="bg-gray-100 border-b py-6">
       <div className="container mx-auto flex justify-between items-center">
@@ -33,9 +36,18 @@ export function Header() {
             <Link href="/Account">Account</Link>
           </Button>
           <div>
-            <form action={loginAction}>
-              <Button variant={"outline"}>Login</Button>
-            </form>
+            {(await getServerClient()).auth.loggedIn() ? (
+              <div>
+                <p> Hello , {member?.nickname}</p>
+                <form action={logoutAction}>
+                  <Button variant={"outline"}>Logout</Button>
+                </form>
+              </div>
+            ) : (
+              <form action={loginAction}>
+                <Button variant={"outline"}>Login</Button>
+              </form>
+            )}
           </div>
         </div>
       </div>

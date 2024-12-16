@@ -22,7 +22,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import client, { convertWixImageToUrl } from "@/lib/wix";
+
 import { redirect } from "next/navigation";
 
 import { Input } from "@/components/ui/input";
@@ -44,6 +44,8 @@ import {
 } from "@/components/ui/dialog";
 import Link from "next/link";
 import DateTimePickerForm from "@/components/date-picker";
+import { getServerClient } from "@/lib/wix";
+import { convertWixImageToUrl } from "@/lib/wix-client";
 
 
 export function CalendarForm() {}
@@ -53,7 +55,7 @@ export default async function Home({
 }: {
   searchParams: { search?: string };
 }) {
-  const Inventory = await client.items
+  const Inventory = await (await getServerClient()).items
     .queryDataItems({
       dataCollectionId: "Inventory",
     })
