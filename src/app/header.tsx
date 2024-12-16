@@ -37,7 +37,10 @@ export async function Header() {
               <Button variant="link" asChild>
                 <Link href="/Account">Account</Link>
               </Button>
-              <form action={logoutAction} className="flex items-center space-x-2">
+              <form
+                action={logoutAction}
+                className="flex items-center space-x-2"
+              >
                 <Button variant="outline">Logout</Button>
                 <p className="text-gray-700">Hello, {member?.nickname}</p>
               </form>
