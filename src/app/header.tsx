@@ -4,11 +4,11 @@ import Link from "next/link";
 
 import { getMember, getServerClient } from "@/lib/wix";
 import { loginAction, logoutAction } from "@/actions";
-import { getClient } from "@/lib/wix-client";
 
 export async function Header() {
   const member = await getMember();
   const isLoggedIn = await (await getServerClient()).auth.loggedIn();
+
   return (
     <div className="bg-gray-100 border-b py-6">
       <div className="container mx-auto flex justify-between items-center">
@@ -31,24 +31,22 @@ export async function Header() {
         </div>
 
         {/* Login and Account buttons on the right */}
-        <div className="ml-6 flex space-x-4">
-          <Button variant="link" asChild>
-            <Link href="/Account">Account</Link>
-          </Button>
-          <div>
-            {(await getServerClient()).auth.loggedIn() ? (
-              <div>
-                <p> Hello , {member?.nickname}</p>
-                <form action={logoutAction}>
-                  <Button variant={"outline"}>Logout</Button>
-                </form>
-              </div>
-            ) : (
-              <form action={loginAction}>
-                <Button variant={"outline"}>Login</Button>
+        <div className="ml-6 flex space-x-4 items-center">
+          {isLoggedIn ? (
+            <>
+              <Button variant="link" asChild>
+                <Link href="/Account">Account</Link>
+              </Button>
+              <form action={logoutAction} className="flex items-center space-x-2">
+                <Button variant="outline">Logout</Button>
+                <p className="text-gray-700">Hello, {member?.nickname}</p>
               </form>
-            )}
-          </div>
+            </>
+          ) : (
+            <form action={loginAction}>
+              <Button variant="outline">Login</Button>
+            </form>
+          )}
         </div>
       </div>
     </div>
