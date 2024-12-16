@@ -9,7 +9,7 @@ export async function loginAction() {
     `${process.env.NEXT_PUBLIC_URL}/login-callback`,
     process.env.NEXT_PUBLIC_URL
   );
-  cookies().set("oauthRedirectData", JSON.stringify(data));
+  (await cookies()).set("oauthRedirectData", JSON.stringify(data));
   const { authUrl } = await client.auth.getAuthUrl(data);
 
   redirect(authUrl);
