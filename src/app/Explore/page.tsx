@@ -1,22 +1,20 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
+import { Button} from "@/components/ui/button";
+import client from "@/lib/wix";
+import {convertWixImageToUrl } from "@/lib/wix";
 import Image from "next/image";
-import { BookIcon } from "lucide-react";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
-import { redirect } from "next/navigation";
-import client from "@/lib/wix"
-// import { AddBookDialog } from "./add-book-dialog";
-// import { getServerClient } from "@/lib/wix";
- import { convertWixImageToUrl } from "@/lib/wix";
-// import { AddReservationDialog} from "./[exploreId]/add-reservation-dialog";
+
+import { BookIcon } from "lucide-react";
+import { redirect} from "next/navigation";
+
   
 export default async function Home({
     searchParams,
@@ -50,7 +48,7 @@ export default async function Home({
                 <Input name="search" type="text" placeholder="Search Library"/>
                 <Button type="submit">Search</Button>
             </form>
-             
+            <div></div>
             </div>
             {Inventory.length === 0 && (
         <div className="border p-12 flex flex-col gap-4 items-center justify-center">
@@ -86,13 +84,9 @@ export default async function Home({
                   <p>No Image</p>
                 </div>
               )}
-              <form>
-
-                
-              </form>
             </CardContent>
             <CardFooter>
-             
+                <Button>Reserve Book</Button>
             </CardFooter>
             </Card>
             ))}
