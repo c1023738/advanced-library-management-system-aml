@@ -13,8 +13,8 @@ export function Header() {
                     <Image
                         src="/Logo.png" // Image path from public folder
                         alt="Logo"
-                        width={40} // Adjust the size as needed
-                        height={40}
+                        width={100} // Adjust the size as needed
+                        height={100}
                     />
                     <span className="font-bold text-xl">Advanced Media Library</span>
                 </div>
