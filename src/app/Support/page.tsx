@@ -23,14 +23,14 @@ const ContactPage = () => {
 
     emailjs
   .send(
-    "service_fehfykt", // Your Email.js Service ID
-    "template_wk3jz8m", // Your Email.js Template ID
+    "service_fehfykt", 
+    "template_wk3jz8m", 
     {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
     },
-    "hD8pRTXUu_AXwtp6-" // Your Email.js Public Key
+    "hD8pRTXUu_AXwtp6-" 
   )
 
       .then(

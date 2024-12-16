@@ -10,12 +10,14 @@ export function Header() {
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo and text on the left side */}
                 <div className="flex items-center space-x-2">
-                    <Image
-                        src="/Logo.png" // Image path from public folder
-                        alt="Logo"
-                        width={100} // Adjust the size as needed
-                        height={100}
-                    />
+                    <Link href="/">
+                        <Image
+                            src="/Logo.png" 
+                            alt="Logo"
+                            width={100}
+                            height={100}
+                        />
+                    </Link>
                     <span className="font-bold text-xl">Advanced Media Library</span>
                 </div>
 
@@ -30,7 +32,13 @@ export function Header() {
                 </div>
 
                 {/* Login button on the right */}
-                <div className="ml-6">
+                <div className="ml-6 flex space-x-4">
+                    {/* Account button */}
+                    <Button variant="link" asChild>
+                        <Link href="/Account">Account</Link>
+                    </Button>
+
+                    {/* Login button */}
                     <Button variant="link" asChild>
                         <Link href="/login">Login</Link>
                     </Button>
