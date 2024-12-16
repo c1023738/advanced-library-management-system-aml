@@ -27,40 +27,18 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Login button on the right */}
+        {/* Login and Account buttons on the right */}
         <div className="ml-6 flex space-x-4">
-          {/* Account button */}
           <Button variant="link" asChild>
             <Link href="/Account">Account</Link>
           </Button>
-
-          {/* Login button */}
-          <Button variant="link" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
+          <div>
+            <form action={loginAction}>
+              <Button variant={"outline"}>Login</Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   );
-  {
-    /* Navigation links */
-  }
-  <div className="flex space-x-6 ml-auto">
-    <Button variant="link" asChild>
-      <Link href="/Explore">Explore</Link>
-    </Button>
-    <Button variant="link" asChild>
-      <Link href="/Support">Support</Link>
-    </Button>
-  </div>;
-
-  {
-    /* Login button on the right */
-  }
-
-  <div className="ml-6">
-    <form action={loginAction}>
-      <Button variant="outline">Login</Button>
-    </form>
-  </div>;
 }
