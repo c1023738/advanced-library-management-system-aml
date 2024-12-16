@@ -2,25 +2,39 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image"; // Import Image for optimized image handling
 
 export function Header() {
     return (
         <div className="bg-gray-100 border-b py-6">
             <div className="container mx-auto flex justify-between items-center">
-                <Button variant="link" asChild>
-                    <Link href="/">AML Library</Link>
-                </Button>
-                <div>
+                {/* Logo and text on the left side */}
+                <div className="flex items-center space-x-2">
+                    <Image
+                        src="/Logo.png" // Image path from public folder
+                        alt="Logo"
+                        width={40} // Adjust the size as needed
+                        height={40}
+                    />
+                    <span className="font-bold text-xl">Advanced Media Library</span>
+                </div>
+
+                {/* Navigation links */}
+                <div className="flex space-x-6 ml-auto">
                     <Button variant="link" asChild>
                         <Link href="/Explore">Explore</Link>
                     </Button>
-                </div>
-                <div>
                     <Button variant="link" asChild>
                         <Link href="/Support">Support</Link>
                     </Button>
                 </div>
-                <div>Login</div>
+
+                {/* Login button on the right */}
+                <div className="ml-6">
+                    <Button variant="link" asChild>
+                        <Link href="/login">Login</Link>
+                    </Button>
+                </div>
             </div>
         </div>
     );
