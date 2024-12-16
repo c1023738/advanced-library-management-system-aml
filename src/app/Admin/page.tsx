@@ -4,7 +4,11 @@ import { StarIcon } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-
+// 
+// Need to wait for reserves are actually functional and also have to change it from only showing your accounts to all accounts and only for admin
+// Need to wait for reserves are actually functional and also have to change it from only showing your accounts to all accounts and only for admin
+// Need to wait for reserves are actually functional and also have to change it from only showing your accounts to all accounts and only for adminv
+// Need to wait for reserves are actually functional and also have to change it from only showing your accounts to all accounts and only for admin
 export default async function AdminPage() {
   const member = await getMember();
 
